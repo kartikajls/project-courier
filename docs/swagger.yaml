@@ -1,0 +1,302 @@
+basePath: /api/v1
+definitions:
+  dto.CourierResponse:
+    properties:
+      address:
+        type: string
+      created_at:
+        type: string
+      email:
+        type: string
+      level:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      status:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: string
+    type: object
+  dto.CreateCourierRequest:
+    properties:
+      address:
+        type: string
+      email:
+        type: string
+      level:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      status:
+        type: string
+      user_id:
+        type: string
+    type: object
+  dto.LevelResponse:
+    properties:
+      description:
+        type: string
+      level_id:
+        type: string
+      name:
+        type: string
+    type: object
+  dto.StatusResponse:
+    properties:
+      type:
+        type: string
+    type: object
+  dto.UpdateCourierRequest:
+    properties:
+      address:
+        type: string
+      email:
+        type: string
+      level:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      status:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: API Documentation for Courier Management System.
+  title: Courier Management System API - by Kartika Jatilaksono
+  version: "1.0"
+paths:
+  /couriers:
+    get:
+      description: Get couriers with search, filter, sorting, and pagination
+      parameters:
+      - description: Search courier name
+        in: query
+        name: search
+        type: string
+      - description: 'Filter by level, example: 2,3'
+        in: query
+        name: level
+        type: string
+      - description: 'Filter by status: active or inactive'
+        in: query
+        name: status
+        type: string
+      - default: 1
+        description: Page number
+        in: query
+        name: page
+        type: integer
+      - default: 10
+        description: Items per page
+        in: query
+        name: per_page
+        type: integer
+      - description: 'Sort field: name or created_at'
+        in: query
+        name: sort
+        type: string
+      - description: 'Sort order: asc or desc'
+        in: query
+        name: order
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get all couriers
+      tags:
+      - Couriers
+    post:
+      consumes:
+      - application/json
+      description: Create a new courier record
+      parameters:
+      - description: Courier data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateCourierRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a new courier
+      tags:
+      - Couriers
+  /couriers/{user_id}:
+    delete:
+      description: Delete a courier by ID
+      parameters:
+      - description: Courier ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Delete courier
+      tags:
+      - Couriers
+    get:
+      description: Get detail of a courier
+      parameters:
+      - description: Courier ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CourierResponse'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get courier by ID
+      tags:
+      - Couriers
+    put:
+      consumes:
+      - application/json
+      description: Update an existing courier
+      parameters:
+      - description: Courier ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      - description: Updated courier data
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.UpdateCourierRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.CourierResponse'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Update courier
+      tags:
+      - Couriers
+  /levels:
+    get:
+      description: Get all courier levels
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.LevelResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get all levels
+      tags:
+      - Levels
+  /statuses:
+    get:
+      description: Get all available courier statuses
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/dto.StatusResponse'
+            type: array
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get all statuses
+      tags:
+      - Statuses
+swagger: "2.0"

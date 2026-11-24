@@ -2,15 +2,12 @@
 
 ## Deskripsi
 
-Courier Management System merupakan aplikasi backend berbasis REST API yang dikembangkan menggunakan bahasa pemrograman Go (Golang) dengan pendekatan Monolithic Architecture dan Clean Architecture.
-<br>
-Aplikasi ini dirancang untuk mengelola data kurir serta informasi operasional yang berkaitan dengan level pekerjaan dan status kurir.
-<br>
-Sistem menyediakan fitur CRUD (Create, Read, Update, Delete) untuk pengelolaan data kurir, serta fitur pencarian, penyaringan, pengurutan, dan pagination untuk mempermudah pengelolaan data.
+<p style="text-align: justify;">Courier Management System merupakan aplikasi backend berbasis REST API yang dikembangkan menggunakan bahasa pemrograman Go (Golang) dengan pendekatan Monolithic Architecture dan Clean Architecture. Aplikasi ini dirancang untuk mengelola data kurir serta informasi operasional yang berkaitan dengan level pekerjaan dan status kurir. Sistem menyediakan fitur CRUD (Create, Read, Update, Delete) untuk pengelolaan data kurir, serta fitur pencarian, penyaringan, pengurutan, dan pagination untuk mempermudah pengelolaan data.
 <br>
 Note:
 <br>
 System ini dibuat untuk memenuhi challange dari Gradin Digital Agency yang beralamatkan di Jl. Taman Internasional B8 no. 33A, Citraland, Surabaya, Indonesia
+</p>
 
 ## Fitur Utama
 

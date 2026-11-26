@@ -32,9 +32,13 @@ Note:
 Daftar level pekerjaan:
 
 1 - Petugas Sortir Barang
+<br>
 2 - Kurir Sepeda Motor
+<br>
 3 - Kurir Mobil
+<br>
 4 - Koordinator
+<br>
 5 - Supervisor
 
 ### 3. Manajemen Status (Status Management)
@@ -42,11 +46,7 @@ Daftar level pekerjaan:
 - Menampilkan seluruh status kurir.
 - Menampilkan detail status berdasarkan tipe.
 - Data status hanya dapat dibaca (*Read Only*).
-
-Daftar status:
-
-active
-inactive
+- Daftar status: active dan inactive
 
 ### 4. Dokumentasi API (Swagger)
 
@@ -57,9 +57,13 @@ inactive
 ## Teknologi yang Digunakan
 
 Teknologi: 
+<br>
 Bahasa Pemrograman : Golang
+<br>
 Framework : Echo v4
+<br>
 Database : MySQL
+<br>
 Dokumentasi API : Swagger
 
 ## Arsitektur Aplikasi
